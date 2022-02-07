@@ -1,6 +1,9 @@
 import time
 start_time = time.time()
-
+# this solution can be improved by doing the following
+# only use the dictionary with single characters
+# remove the value of the roman numeral from the result if its value is smaller than the next numeral
+# else add the value to the result
 class Solution:
     def romanToInt(self, s: str) -> int:
         result = 0
