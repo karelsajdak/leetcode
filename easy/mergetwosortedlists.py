@@ -8,28 +8,25 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1, list2):
-        result = []
+        resultListNode = ListNode()
+        lastNode = resultListNode
         while list1 or list2:
             if list1 and list2:
                 if list1.val < list2.val:
-                    result.append(list1.val)
+                    lastNode.next = list1
                     list1 = list1.next
                 else:
-                    result.append(list2.val)
+                    lastNode.next = list2
                     list2 = list2.next
             else:
                 if list1:
-                    result.append(list1.val)
+                    lastNode.next = list1
                     list1 = list1.next
                 else:
-                    result.append(list2.val)
+                    lastNode.next = list2
                     list2 = list2.next
-        resultListNode = None
-        if result:
-            resultListNode = ListNode(val=result.pop())
-            while result:
-                resultListNode = ListNode(val=result.pop(), next=resultListNode)
-        return resultListNode
+            lastNode = lastNode.next
+        return resultListNode.next
 
 list1 = ListNode(val=1, next=ListNode(val=2, next=ListNode(val=4)))
 list2 = ListNode(val=1, next=ListNode(val=3, next=ListNode(val=4)))
